@@ -1,0 +1,32 @@
+Download zookeeper:
+1. go to https://www.apache.org/dyn/closer.lua/zookeeper and download the latest stable version of zookeeper...-bin.tar.gz
+2. define 1 system variable: ZOO_KEEPER = <folder that'd extracted from gz> (preferred, in C drive, not in Users folder)
+3. add this system variable to "path" system variable
+4. open cmd and run zkServer.cmd - to start the zookeeper server
+5. open another cmd and run zkCli.cmd - to start the zookeeper client
+
+Few remarks:
+1. any znode should start with a forward slash (/) when creating it.
+2. to check which znodes we have in the zookeeper, go to the client cmd that's open and type command: "ls /"
+3. to check which data each znode holds, go to the client cmd that's open and type command: "get /<name of znode>"
+4. to get the znode's acl, go to the client cmd that's open and type command: "getAcl /<name of znode>"
+5. to set the znode's acl, go to the client cmd that's open and type command for example: "setAcl /<name of znode> world:anyone:card"
+   so here, we gave permission to everyone to create, admin, read and delete.
+6. to define a new user and password, go to the client cmd that's open and type command for example: "addauth digest <user name>:<password>"  
+
+ACL (Access Control List):
+ACL control which users are authenticated to access the different znodes, and which permissions do they have.
+ZooKeeper supports the following permissions:
+1. READ - you can get data from a node and list its children - represented by 2^0
+2. WRITE - you can set data for a node - represented by 2^1
+3. CREATE - you can create a child node - represented by 2^2
+4. DELETE - you can delete a child node - represented by 2^3
+5. ADMIN - you can set permissions - represented by 2^4
+the permission set is represented by a binary number. so for example, if a specific znode has acl of: 22, that means that it has:
+16+4+2 = ACW permissions - Admin, Create and Write permissions.
+ZooKeeeper has the following built in schemes:
+1. world: has a single id, anyone, that represents anyone
+2. auth: doesn’t use any id, represents any authenticated user
+3. digest: uses a username:password string to generate MD5 hash which is then used as an ACL ID identity
+4. host: uses the client host name as an ACL ID identity
+5. ip: uses the client host IP as an ACL ID identity
