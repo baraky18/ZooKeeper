@@ -30,3 +30,7 @@ ZooKeeeper has the following built in schemes:
 3. digest: uses a username:password string to generate MD5 hash which is then used as an ACL ID identity
 4. host: uses the client host name as an ACL ID identity
 5. ip: uses the client host IP as an ACL ID identity
+
+For more information regarding Zookeeper and Zookepper's algorithems:
+https://medium.com/@bikas.katwal10/zookeeper-introduction-designing-a-distributed-system-using-zookeeper-and-java-7f1b108e236e
+  
